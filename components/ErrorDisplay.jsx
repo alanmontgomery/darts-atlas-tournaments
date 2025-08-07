@@ -16,7 +16,7 @@ const ErrorDisplay = ({ error, onDismiss }) => {
             {onDismiss && (
               <button
                 onClick={onDismiss}
-                className="text-red-400 hover:text-red-600 transition-colors"
+                className="text-red-400 hover:text-red-600 transition-colors cursor-pointer"
               >
                 <FaTimes className="h-4 w-4" />
               </button>

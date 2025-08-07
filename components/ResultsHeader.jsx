@@ -5,10 +5,10 @@ const ResultsHeader = ({ results, paginationInfo, isLoading }) => {
   if (!results) return null;
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+    <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="flex items-center space-x-4">
-          <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg shadow-lg">
+          <div className="flex items-center justify-center w-12 h-12 bg-blue-500 rounded-xl border border-blue-200">
             <FaTrophy className="text-white text-xl" />
           </div>
           <div>
@@ -32,7 +32,7 @@ const ResultsHeader = ({ results, paginationInfo, isLoading }) => {
         {/* Stats */}
         <div className="flex items-center space-x-4">
           {paginationInfo && paginationInfo.totalResults > 0 && (
-            <div className="flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-lg">
+            <div className="flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-xl border border-blue-100">
               <FaInfoCircle className="text-blue-500" />
               <span className="text-sm font-medium text-blue-700">
                 {paginationInfo.totalResults} total tournaments
@@ -41,7 +41,7 @@ const ResultsHeader = ({ results, paginationInfo, isLoading }) => {
           )}
           
           {paginationInfo && paginationInfo.currentPage && (
-            <div className="flex items-center space-x-2 px-4 py-2 bg-green-50 rounded-lg">
+            <div className="flex items-center space-x-2 px-4 py-2 bg-green-50 rounded-xl border border-green-100">
               <FaClock className="text-green-500" />
               <span className="text-sm font-medium text-green-700">
                 Page {paginationInfo.currentPage} of {paginationInfo.totalPages}

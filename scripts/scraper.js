@@ -66,7 +66,131 @@ class DartsAtlasScraper {
     }
   }
 
-  async extractTournaments(html) {
+  async fetchEntriesCount(tournamentLink) {
+    if (!tournamentLink) return null;
+
+    try {
+      const entriesUrl = `https://www.dartsatlas.com${tournamentLink}/entries`;
+      console.log(`🔍 Fetching entries count from: ${entriesUrl}`);
+
+      const response = await this.session.get(entriesUrl, {
+        timeout: 10000,
+      });
+
+      if (response.status !== 200) {
+        console.log(`⚠️ Failed to fetch entries page: ${response.status}`);
+        return null;
+      }
+
+      const $ = cheerio.load(response.data);
+
+      // Look for the order-of-merit table specifically
+      const orderOfMeritTable = $("table.order-of-merit");
+
+      if (orderOfMeritTable.length > 0) {
+        // Count the rows in the tbody
+        const tbody = orderOfMeritTable.find("tbody");
+        if (tbody.length > 0) {
+          const rows = tbody.find("tr");
+          const entriesCount = rows.length;
+
+          if (entriesCount > 0) {
+            console.log(
+              `✅ Found ${entriesCount} entries in order-of-merit table`
+            );
+            return entriesCount;
+          }
+        }
+      }
+
+      // Fallback: Try to find any table with entries/participants
+      const tables = $("table");
+      for (let i = 0; i < tables.length; i++) {
+        const table = $(tables[i]);
+        const tbody = table.find("tbody");
+        if (tbody.length > 0) {
+          const rows = tbody.find("tr");
+          // Check if this looks like an entries table (has user links or player names)
+          const hasUserLinks = rows.find('a[href*="/players/"]').length > 0;
+          const hasPlayerNames = rows
+            .find("td")
+            .text()
+            .match(/[a-zA-Z]/);
+
+          if (hasUserLinks || hasPlayerNames) {
+            const entriesCount = rows.length;
+            if (entriesCount > 0) {
+              console.log(
+                `✅ Found ${entriesCount} entries in table (fallback)`
+              );
+              return entriesCount;
+            }
+          }
+        }
+      }
+
+      // If still no count found, try the old methods as fallback
+      const selectors = [
+        ".entries-count",
+        ".participants-count",
+        '[class*="entries"]',
+        '[class*="participants"]',
+        ".count",
+        "h1, h2, h3", // Look for headings that might contain count
+      ];
+
+      let entriesCount = null;
+
+      for (const selector of selectors) {
+        const element = $(selector);
+        if (element.length > 0) {
+          const text = element.text().trim();
+          // Look for numbers in the text
+          const match = text.match(/(\d+)/);
+          if (match) {
+            entriesCount = parseInt(match[1], 10);
+            console.log(
+              `✅ Found entries count: ${entriesCount} using selector: ${selector}`
+            );
+            break;
+          }
+        }
+      }
+
+      // If no specific count found, try to count entries in a list
+      if (!entriesCount) {
+        const entriesList = $(
+          '.entries-list, .participants-list, [class*="entries"], [class*="participants"]'
+        );
+        if (entriesList.length > 0) {
+          const entries = entriesList.find("li, .entry, .participant");
+          if (entries.length > 0) {
+            entriesCount = entries.length;
+            console.log(`✅ Counted ${entriesCount} entries from list`);
+          }
+        }
+      }
+
+      // If still no count, try to find any text that mentions numbers of players
+      if (!entriesCount) {
+        const bodyText = $("body").text();
+        const playerMatch = bodyText.match(
+          /(\d+)\s*(?:player|participant|entry|entrant)/i
+        );
+        if (playerMatch) {
+          entriesCount = parseInt(playerMatch[1], 10);
+          console.log(`✅ Found entries count from text: ${entriesCount}`);
+        }
+      }
+
+      return entriesCount;
+    } catch (error) {
+      console.log(`⚠️ Error fetching entries count: ${error.message}`);
+      return null;
+    }
+  }
+
+  async extractTournaments(html, fetchEntries = false) {
     console.log("🔍 Extracting tournament data...");
 
     const $ = cheerio.load(html);
@@ -166,46 +290,35 @@ class DartsAtlasScraper {
       ".search-result-item",
       'div[class*="tournament"]',
       'div[class*="event"]',
-      ".card",
-      ".item",
-      ".search-result",
-      '[class*="result"]',
+      "li",
       "article",
-      "section",
+      "div",
     ];
 
     for (const selector of selectors) {
       elements = $(selector);
       if (elements.length > 0) {
         console.log(
-          `Found ${elements.length} elements with selector: ${selector}`
+          `✅ Found ${elements.length} elements using selector: ${selector}`
         );
         break;
       }
     }
 
-    // If no specific tournament elements found, try to find any content that might be tournaments
     if (elements.length === 0) {
-      elements = $("div, article, section");
-      console.log(
-        `No specific tournament elements found, trying general elements: ${elements.length}`
-      );
+      console.log("⚠️ No tournament elements found");
+      return [];
     }
 
-    // Filter out elements that are likely containers (too much content)
+    // Filter elements to only include those that look like tournaments
     elements = elements.filter((index, element) => {
       const $element = $(element);
-      const textContent = $element.text().trim();
-      const hasCalendarIcon = $element.find(".calendar-event-icon").length > 0;
-      const hasVenueEmbed = $element.find(".venue-embed").length > 0;
-
-      // Only include elements that have tournament-specific content
+      const textContent = $element.text().trim().toLowerCase();
       return (
-        textContent.length > 10 &&
-        (hasCalendarIcon ||
-          hasVenueEmbed ||
-          textContent.includes("tournament") ||
-          textContent.includes("event"))
+        textContent.includes("tournament") ||
+        textContent.includes("event") ||
+        $element.find("a[href*='tournament']").length > 0 ||
+        $element.find(".tournament").length > 0
       );
     });
 
@@ -290,7 +403,45 @@ class DartsAtlasScraper {
     return tournaments;
   }
 
-  async searchTournaments(searchParams = {}) {
+  async enrichTournamentsWithEntries(tournaments) {
+    console.log("🔍 Enriching tournaments with entries data...");
+
+    const enrichedTournaments = [];
+
+    for (let i = 0; i < tournaments.length; i++) {
+      const tournament = { ...tournaments[i] };
+
+      if (tournament.link) {
+        try {
+          const entriesCount = await this.fetchEntriesCount(tournament.link);
+          if (entriesCount !== null) {
+            tournament.entriesCount = entriesCount;
+            console.log(
+              `✅ Added entries count (${entriesCount}) to tournament: ${tournament.name}`
+            );
+          }
+        } catch (error) {
+          console.log(
+            `⚠️ Failed to fetch entries for tournament ${tournament.name}: ${error.message}`
+          );
+        }
+      }
+
+      enrichedTournaments.push(tournament);
+
+      // Add a small delay to avoid overwhelming the server
+      if (i < tournaments.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
+    }
+
+    console.log(
+      `✅ Enriched ${enrichedTournaments.length} tournaments with entries data`
+    );
+    return enrichedTournaments;
+  }
+
+  async searchTournaments(searchParams = {}, includeEntries = false) {
     console.log("🔍 Performing search with parameters:", searchParams);
 
     try {
@@ -322,7 +473,15 @@ class DartsAtlasScraper {
       }
 
       const html = await this.fetchPage(url.toString());
-      return await this.extractTournaments(html);
+      const tournaments = await this.extractTournaments(html);
+
+      // Optionally enrich with entries data
+      if (includeEntries && tournaments.length > 0) {
+        console.log("🔍 Including entries data in search results...");
+        return await this.enrichTournamentsWithEntries(tournaments);
+      }
+
+      return tournaments;
     } catch (error) {
       console.error("❌ Error during search:", error.message);
       return [];
@@ -432,7 +591,7 @@ class DartsAtlasScraper {
     return paginationInfo;
   }
 
-  async scrapePage(url, pageNumber = 1) {
+  async scrapePage(url, pageNumber = 1, includeEntries = false) {
     console.log(`📄 Scraping page ${pageNumber}...`);
 
     try {
@@ -447,8 +606,17 @@ class DartsAtlasScraper {
       const tournaments = await this.extractTournaments(html);
       const paginationInfo = await this.getPaginationInfo(html);
 
+      // Optionally enrich with entries data
+      let enrichedTournaments = tournaments;
+      if (includeEntries && tournaments.length > 0) {
+        console.log(`🔍 Including entries data for page ${pageNumber}...`);
+        enrichedTournaments = await this.enrichTournamentsWithEntries(
+          tournaments
+        );
+      }
+
       return {
-        tournaments,
+        tournaments: enrichedTournaments,
         paginationInfo,
         pageNumber,
         url,
@@ -471,7 +639,11 @@ class DartsAtlasScraper {
     }
   }
 
-  async scrapeAllPages(searchParams = {}, maxPages = 10) {
+  async scrapeAllPages(
+    searchParams = {},
+    maxPages = 10,
+    includeEntries = false
+  ) {
     console.log(`🔍 Scraping all pages (max: ${maxPages})...`);
 
     const allTournaments = [];
@@ -506,7 +678,11 @@ class DartsAtlasScraper {
       while (hasMorePages && currentPage <= maxPages) {
         console.log(`📄 Scraping page ${currentPage}...`);
 
-        const pageResult = await this.scrapePage(baseUrl, currentPage);
+        const pageResult = await this.scrapePage(
+          baseUrl,
+          currentPage,
+          includeEntries
+        );
 
         allPages.push(pageResult);
         allTournaments.push(...pageResult.tournaments);
@@ -619,13 +795,17 @@ class DartsAtlasScraper {
         let paginationInfo = null;
         let allPages = [];
 
+        // Check if entries should be included
+        const includeEntries = options.includeEntries || false;
+
         if (options.searchParams) {
           // Check if we should scrape all pages
           if (options.scrapeAllPages) {
             const maxPages = options.maxPages || 10;
             const multiPageResult = await this.scrapeAllPages(
               options.searchParams,
-              maxPages
+              maxPages,
+              includeEntries
             );
             tournaments = multiPageResult.tournaments;
             allPages = multiPageResult.pages;
@@ -635,18 +815,13 @@ class DartsAtlasScraper {
             };
           } else {
             // Single page search
-            let url = this.buildSearchUrl(options.searchParams);
-
-            // Add page parameter if specified
-            if (options.page && options.page > 1) {
-              const urlObj = new URL(url);
-              urlObj.searchParams.append("page", options.page.toString());
-              url = urlObj.toString();
-            }
-
-            const html = await this.fetchPage(url);
-            tournaments = await this.extractTournaments(html);
-            paginationInfo = await this.getPaginationInfo(html);
+            tournaments = await this.searchTournaments(
+              options.searchParams,
+              includeEntries
+            );
+            paginationInfo = await this.getPaginationInfo(
+              await this.fetchPage(this.buildSearchUrl(options.searchParams))
+            );
 
             // Update pagination info with current page
             if (options.page) {
@@ -666,6 +841,13 @@ class DartsAtlasScraper {
 
           const html = await this.fetchPage(url);
           tournaments = await this.extractTournaments(html);
+
+          // Optionally enrich with entries data
+          if (includeEntries && tournaments.length > 0) {
+            console.log("🔍 Including entries data in scrape results...");
+            tournaments = await this.enrichTournamentsWithEntries(tournaments);
+          }
+
           pageInfo = await this.getPageInfo(html);
           paginationInfo = await this.getPaginationInfo(html);
 

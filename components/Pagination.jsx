@@ -51,7 +51,7 @@ const Pagination = ({
           <button
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1 || isLoading}
-            className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm"
+            className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer"
           >
             <FaChevronLeft className="text-xs" />
             <span>Previous</span>
@@ -64,9 +64,9 @@ const Pagination = ({
                 key={pageNumber}
                 onClick={() => onPageChange(pageNumber)}
                 disabled={isLoading}
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 shadow-sm ${
+                className={`px-3 py-2 text-sm font-medium rounded-xl transition-all duration-200 cursor-pointer ${
                   currentPage === pageNumber
-                    ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg"
+                    ? "bg-blue-500 text-white border border-blue-200"
                     : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
@@ -79,7 +79,7 @@ const Pagination = ({
           <button
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages || isLoading}
-            className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm"
+            className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer"
           >
             <span>Next</span>
             <FaChevronRight className="text-xs" />
@@ -89,7 +89,7 @@ const Pagination = ({
 
       {/* Page Info */}
       <div className="mt-4 text-center">
-        <div className="inline-flex items-center space-x-4 px-6 py-3 bg-white rounded-lg shadow-sm border border-gray-200">
+        <div className="inline-flex items-center space-x-4 px-6 py-3 bg-white rounded-xl border border-gray-200">
           <span className="text-sm font-medium text-gray-700">
             Page {currentPage} of {totalPages}
           </span>

@@ -13,6 +13,7 @@ export async function POST(request) {
       useCache = true,
       forceRefresh = false,
       page = 1,
+      includeEntries = false,
     } = body;
 
     console.log("🚀 Starting scraper via API...");
@@ -21,8 +22,8 @@ export async function POST(request) {
     const timeoutPromise = new Promise((_, reject) => {
       setTimeout(
         () => reject(new Error("Scraping timeout - operation took too long")),
-        300000
-      ); // 5 minutes
+        includeEntries ? 600000 : 300000 // 10 minutes if including entries, 5 minutes otherwise
+      );
     });
 
     const scraper = new DartsAtlasScraper();
@@ -36,6 +37,7 @@ export async function POST(request) {
         scrapeAllPages,
         maxPages,
         page,
+        includeEntries,
       }),
       timeoutPromise,
     ]);
@@ -43,7 +45,9 @@ export async function POST(request) {
     if (results.success) {
       return NextResponse.json({
         success: true,
-        message: `Successfully scraped ${results.totalCount} tournaments`,
+        message: `Successfully scraped ${results.totalCount} tournaments${
+          includeEntries ? " with entries data" : ""
+        }`,
         data: results,
       });
     } else {

@@ -37,7 +37,7 @@ const CacheStatus = ({ lastUpdated, onRefresh, isLoading }) => {
         <button
           onClick={onRefresh}
           disabled={isLoading}
-          className="flex items-center space-x-2 bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 focus:ring-4 focus:ring-green-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm"
+          className="flex items-center space-x-2 bg-green-600 text-white py-2 px-4 rounded-xl font-semibold hover:bg-green-700 focus:ring-4 focus:ring-green-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-green-200 cursor-pointer"
         >
           <FaSync className={`text-sm ${isLoading ? "animate-spin" : ""}`} />
           <span>{isLoading ? "Refreshing..." : "Refresh"}</span>
