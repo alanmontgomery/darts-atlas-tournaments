@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "scrapedAt": "2025-08-07T15:27:45.820Z",
+    "source": "https://www.dartsatlas.com/search?scope=tournaments",
+    "totalTournaments": 11
+  },
+  "tournaments": [
+    {
+      "id": 1,
+      "name": "Vault 13.0 @ The Skerry Inn, Newton Crommelin (Thursday)",
+      "location": "The Skerry Inn\n  12 Old Cushendun Road Newton Crommelin BT43 6RJ",
+      "date": "7:30pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "Showing tournaments between Thu, Aug 07, 2025 and Sun, Sep 07, 2025",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n      <p>\n        Showing tournaments between Thu, Aug 07, 2025 and Sun, Sep 07, 2025\n      </p>\n        <ul class=\"events-list\">\n          <li>\n              <section class=\"event\" id=\"tournament_SR0DbZPz50sQ\">\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Thu</span><span>Aug</span><span>07</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us"
+    },
+    {
+      "id": 2,
+      "name": "Vault 13.0 @ The Skerry Inn, Newton Crommelin (Thursday)",
+      "location": "The Skerry Inn\n  12 Old Cushendun Road Newton Crommelin BT43 6RJ",
+      "date": "7:30pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:30pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Thu</span><span>Aug</span><span>07</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 3,
+      "name": "Vault 13.0 @ Reds Sports Lounge, Ballymena (Thursday)",
+      "location": "Reds sports lounge \n  14 Garfield place ballymena BT436EH",
+      "date": "7:45pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:45pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Thu</span><span>Aug</span><span>07</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 4,
+      "name": "Vault 13.0 @ Grange Bar, Ballyclare (Thursday)",
+      "location": "Grange Bar\n  22-26 The Square, Ballyclare BT39 9BB",
+      "date": "7:45pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:45pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Thu</span><span>Aug</span><span>07</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 5,
+      "name": "Vault 13.0 @ Banbridge RBL, Banbridge (Thursday)",
+      "location": "Banbridge RBL\n  7 Kenlis Court Banbridge BT32 3LW",
+      "date": "7:45pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:45pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Thu</span><span>Aug</span><span>07</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 6,
+      "name": "Vault 13.0 @ Crown Bar, Limavady (Thursday)",
+      "location": "The Crown Bar\n  24 Irish Green St, Limavady BT49 9AE",
+      "date": "8:00pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "8:00pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Thu</span><span>Aug</span><span>07</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 7,
+      "name": "Vault 13.0 @ Top of the Town, Antrim (Friday)",
+      "location": "Top Of The Town\n  77 Fountain St, Antrim BT41 4BG",
+      "date": "7:30pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:30pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Fri</span><span>Aug</span><span>08</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 8,
+      "name": "Vault 13.0 @ Ballylumford Club, Larne (Friday)",
+      "location": "Ballylumford Sports & Social Club\n  50 Main Street, Larne, BT40 1SP",
+      "date": "7:30pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:30pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Fri</span><span>Aug</span><span>08</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 9,
+      "name": "👑 KING OF THE OCHE 👑 Preseason tournament open to  players registering to play for a MASA team this season.",
+      "location": "Whiteabbey Masonic Centre, Newtownabbey\n  Monkstown Ave, Newtownabbey BT37 0EB",
+      "date": "7:45pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:45pm (Europe/London)",
+      "link": "/tournaments/UKSG07Zygvpa",
+      "image": "",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Fri</span><span>Aug</span><span>08</span></span>\n   \n   <h2>\n     <a class=\"tournament event-link\" href=\"/tournaments/UKSG07Zygvpa\"> 👑 KING OF THE OCHE 👑 Preseason tournament open to  players registering to play for a MASA team this season.</a>\n   </h2>\n     <p>\n       <span class=\"time\">\n         <i class=\"fa fa-clock\"></i>  7:45pm (Europe/London)\n       </span>\n     </p>\n   \n   <p class=\"venue-embed\">\n  <a href=\"/venue"
+    },
+    {
+      "id": 10,
+      "name": "Vault 13.0 @ Services Club, Ballymena (Friday)",
+      "location": "Services Club Ballymena\n  52 Trostan Ave, Ballymena BT43 7BL",
+      "date": "7:45pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "7:45pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Fri</span><span>Aug</span><span>08</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    },
+    {
+      "id": 11,
+      "name": "Vault 13.0 @ Bluebell Stadium, Lisburn (💥⚠️SATURDAY ⚠️💥)",
+      "location": "The Bluebell Stadium\n  9 Rushmore Dr, Lisburn BT28 2HN\n    \n    Managed",
+      "date": "1:00pm (Europe/London)",
+      "structure": "",
+      "status": "",
+      "description": "1:00pm (Europe/London)",
+      "link": "/o/UCypblAwtczg",
+      "image": "https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180",
+      "rawHtml": "\n  <header class=\"tournament\">\n   <span class=\"calendar-event-icon\"><span>Sat</span><span>Aug</span><span>09</span></span>\n   \n     <a class=\"league linked-name-and-photo\" href=\"/o/UCypblAwtczg\"><img alt=\"ADC United Kingdom\" class=\"league id-UCypblAwtczg profile-photo\" src=\"https://s3.us-east-2.amazonaws.com/dartsatlas.com/variants/14iyepsabtiiv12461dkkne3p7vp/7fa914211c3dfbd502b55859ac452fd42b5e28af8d5204d3129965e20326d025?v=1750924180\"> <span>ADC United Kingdom</span></a>\n   <h2>\n     <a class"
+    }
+  ]
+}
